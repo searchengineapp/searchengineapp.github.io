@@ -79,7 +79,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}\n  </h1>\n  <h3><a href=\"\">User Guide</a></h3>\n  <h3><a href=\"http://www.gutenberg.org/\">Project Gutenberg</a></h3>\n  <br/>\n  <img src=\"https://library.lapeer.org/children/images/books.jpeg/@@images/image.jpeg\"\n  width=\"220\" height=\"140\" />\n  <p>The search engine application is used to assist \n    students and researchers of all types to perform \n    multiple searches in any collection of books.</p>\n    <h2>Please input query below</h2>\n    <router-outlet></router-outlet>\n\n\n  <!-- \n  </div>\n    <h3>Example - Type a word from the text bellow to see the search result:<h3>\n    <p>A Christmas Carol by Charles Dickens</p>\n    <p>Stave Two</p>\n    <p>The First of the Three Spirits</p>\n    <p>When Scrooge awoke, it was so dark, that looking out of bed, he could scarcely distinguish the transparent window from the opaque walls of his chamber. He was endeavouring to pierce the darkness with his ferret eyes, when the chimes of a neighbouring church struck the four quarters. So, he listened for the hour.\n     To his great astonishment the heavy bell went on from six to seven, and from seven to eight, and regularly up to twelve; then stopped. Twelve! It was past two when he went to bed. The clock was wrong. An icicle must have got into the works. Twelve!\n     He touched the spring of his repeater, to correct this most preposterous clock. Its rapid little pulse beat twelve: and stopped.\n     “Why, it isn’t possible,” said Scrooge, “that I can have slept through a whole day and far into another night. It isn’t possible that anything has happened to the sun, and this is twelve at noon!”\n     The idea being an alarming one, he scrambled out of bed, and groped his way to the window. He was obliged to rub the frost off with the sleeve of his dressing-gown before he could see anything; and could see very little then. All he could make out was, that it was still very foggy and extremely cold, and that there was no noise of people running to and fro, and making a great stir.\n     </p>\n  --> \n     \n     "
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}\n  </h1>\n  <h3><a href=\"https://searchengineguide.github.io/\">User Guide</a></h3>\n  <h3><a href=\"http://www.gutenberg.org/\">Project Gutenberg</a></h3>\n  <br/>\n  <img src=\"https://library.lapeer.org/children/images/books.jpeg/@@images/image.jpeg\"\n  width=\"220\" height=\"140\" />\n  <p>The search engine application is used to assist \n    students and researchers of all types to perform \n    multiple searches in any collection of books.</p>\n    <h2>Please input query below</h2>\n    <router-outlet></router-outlet>\n\n\n  \n     \n     "
 
 /***/ }),
 
@@ -185,7 +185,7 @@ module.exports = ":host {\r\n    display: block;\r\n    padding: 0 20px;\r\n  }\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Search</h2>\n<form>\n  <input type=\"search\" name=\"query\" [(ngModel)]=\"query\" (keyup.enter)=\"search()\">\n  <button type=\"button\" (click)=\"search()\">Search</button>\n</form>\n<table *ngIf=\"searchResults\">\n  <thead>\n  <tr>\n    <th>Quotes</th>\n    <th>Citations</th>\n  </tr>\n  </thead>\n  <tbody>\n  <tr *ngFor=\"let person of searchResults; let i=index\">\n    <td>{{person.quote}}</td>\n    <td>{{person.citation}}</td>\n  </tr>\n  </tbody>\n</table>"
+module.exports = "<h2>Search</h2>\n<form>\n  <input type=\"search\" name=\"query\" [(ngModel)]=\"query\" (keyup.enter)=\"search()\">\n  <button type=\"button\" (click)=\"search()\">Search</button>\n</form>\n<table *ngIf=\"searchResults\">\n  <thead>\n  <tr>\n    <th>Quotes</th>\n    <th>Citations</th>\n  </tr>\n  </thead>\n  <tbody>\n  <tr *ngFor=\"let retreiver of searchResults; let i=index\">\n    <td>{{retreiver.quote}}</td>\n    <td>{{retreiver.citation}}</td>\n  </tr>\n  </tbody>\n</table>"
 
 /***/ }),
 
@@ -234,7 +234,7 @@ var SearchComponent = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/shared/index.ts ***!
   \*********************************/
-/*! exports provided: SearchService, Address, Person */
+/*! exports provided: SearchService, Retriever */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -242,9 +242,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_search_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./search/search.service */ "./src/app/shared/search/search.service.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchService", function() { return _search_search_service__WEBPACK_IMPORTED_MODULE_0__["SearchService"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Address", function() { return _search_search_service__WEBPACK_IMPORTED_MODULE_0__["Address"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Person", function() { return _search_search_service__WEBPACK_IMPORTED_MODULE_0__["Person"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Retriever", function() { return _search_search_service__WEBPACK_IMPORTED_MODULE_0__["Retriever"]; });
 
 
 
@@ -255,14 +253,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./src/app/shared/search/search.service.ts ***!
   \*************************************************/
-/*! exports provided: SearchService, Address, Person */
+/*! exports provided: SearchService, Retriever */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchService", function() { return SearchService; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Address", function() { return Address; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Person", function() { return Person; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Retriever", function() { return Retriever; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
@@ -297,24 +294,12 @@ var SearchService = /** @class */ (function () {
     return SearchService;
 }());
 
-var Address = /** @class */ (function () {
-    function Address(obj) {
-        this.street = obj && obj.street || null;
-        this.city = obj && obj.city || null;
-        this.state = obj && obj.state || null;
-        this.zip = obj && obj.zip || null;
-    }
-    return Address;
-}());
-
-var Person = /** @class */ (function () {
-    function Person(obj) {
+var Retriever = /** @class */ (function () {
+    function Retriever(obj) {
         this.id = obj && Number(obj.id) || null;
         this.name = obj && obj.name || null;
-        this.phone = obj && obj.phone || null;
-        this.address = obj && obj.address || null;
     }
-    return Person;
+    return Retriever;
 }());
 
 
